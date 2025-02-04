@@ -3,9 +3,9 @@ from fastapi.security import OAuth2PasswordBearer
 from general import db_dependency
 from models import TodoList
 from schemas import CreateTodoSchema
-from auth import decode_access_token
+from .auth import decode_access_token
 from typing import Annotated
-from auth import get_current_user
+from .auth import get_current_user
 
 router = APIRouter(tags=["todo"],prefix="/todo")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="")
