@@ -1,13 +1,13 @@
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 
-from routers import todo, auth, upload_download
+from routers import todos, auth, upload_download, testhtml
 
 app = FastAPI(title="TODOLIST API")
 
-@app.get("/ketmon",status_code=200)
-async def ketmonjon():
-	return {"status": "Salom Ketmon"}
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
-app.include_router(todo.router)
+app.include_router(todos.router)
 app.include_router(auth.router)
 app.include_router(upload_download.router)
+app.include_router(testhtml.router)
